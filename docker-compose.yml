@@ -4,7 +4,7 @@ services:
     container_name: filebrowser
     user: "${UID:-1000}:${GID:-1000}"
     volumes:
-      - datatabase:/database
+      - database:/database
       - config:/config
       - /etc/localtime:/etc/localtime:ro
       - /mnt/storage/media/animes:/srv/Animes
