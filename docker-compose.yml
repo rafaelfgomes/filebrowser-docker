@@ -2,10 +2,11 @@ services:
   filebrowser:
     image: filebrowser/filebrowser:latest
     container_name: filebrowser
+    hostname: filebrowser
     user: "${UID:-1000}:${GID:-1000}"
     volumes:
-      - database:/database
-      - config:/config
+      - ${DATABASE_FOLDER:-./database}:/database
+      - ${CONFIG_FOLDER:-./config}:/config
       - /etc/localtime:/etc/localtime:ro
       - /mnt/storage/media/animes:/srv/Animes
       - /mnt/storage/media/movies:/srv/Filmes
@@ -23,9 +24,3 @@ services:
 networks:
   net:
     external: false
-
-volumes:
-  database:
-    name: filebrowser-database
-  config:
-    name: filebrowser-config
